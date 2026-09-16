@@ -10,6 +10,8 @@ const client = new MongoClient(process.env.DB_URI);
  async function connectToMongoDB() {
   try {
     await client.connect();
+    const db = client.db("digital-product");
+    const productsCollection= db.collection("products");
 
 
     console.log("You successfully connected to MongoDB!");
