@@ -14,15 +14,14 @@ const client = new MongoClient(process.env.DB_URI);
     const productsCollection= db.collection("products");
 
 
-
-
-
-    app.get('/products', async (req, res)=>{
-      const cursor = await productsCollection.find();
-      const result =await cursor.toArray();
+    // get all data.........................................
+  app.get('/products', async(req, res)=>{
+      const result = await productsCollection.find().toArray()
       res.send(result)
-    })
+  })
 
+
+ 
 
 
 
