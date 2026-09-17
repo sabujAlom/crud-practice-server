@@ -2,7 +2,7 @@ const express = require('express');
 const app = express()
 require('dotenv').config()
 const port = process.env.PORT
-const { MongoClient }= require('mongodb');
+const { MongoClient, ObjectId }= require('mongodb');
 
 
 const client = new MongoClient(process.env.DB_URI);
@@ -20,6 +20,15 @@ const client = new MongoClient(process.env.DB_URI);
       res.send(result)
   })
 
+
+
+  // get a single product......................................
+    app.get('/products/:productId', async(req, res)=>{
+      const productId = req.params.productId
+      const query = {_id: new ObjectId(productId)}
+      const result =await productsCollection.findOne(query)
+      res.send(result)
+  })
 
  
 
