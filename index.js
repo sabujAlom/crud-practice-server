@@ -15,11 +15,11 @@ const client = new MongoClient(process.env.DB_URI);
 
 
     // get all data.........................................
-  app.get('/products', async(req, res)=>{
+  
+    app.get('/products', async(req, res)=>{
       const result = await productsCollection.find().toArray()
       res.send(result)
-  })
-
+    })
 
 
   // get a single product......................................
